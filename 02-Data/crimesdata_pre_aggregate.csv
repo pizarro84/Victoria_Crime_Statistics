@@ -1,0 +1,475 @@
+,Local_Government_Area,Offence_Division,Incidents_Recorded
+0,Alpine,A Crimes against the person,713
+1,Alpine,B Property and deception offences,1580
+2,Alpine,C Drug offences,240
+3,Alpine,D Public order and security offences,482
+4,Alpine,E Justice procedures offences,322
+5,Alpine,F Other offences,66
+6,Ararat,A Crimes against the person,1937
+7,Ararat,B Property and deception offences,3988
+8,Ararat,C Drug offences,520
+9,Ararat,D Public order and security offences,1042
+10,Ararat,E Justice procedures offences,1358
+11,Ararat,F Other offences,108
+12,Ballarat,A Crimes against the person,11950
+13,Ballarat,B Property and deception offences,55768
+14,Ballarat,C Drug offences,2048
+15,Ballarat,D Public order and security offences,4524
+16,Ballarat,E Justice procedures offences,8789
+17,Ballarat,F Other offences,451
+18,Banyule,A Crimes against the person,8876
+19,Banyule,B Property and deception offences,41659
+20,Banyule,C Drug offences,2235
+21,Banyule,D Public order and security offences,2536
+22,Banyule,E Justice procedures offences,11518
+23,Banyule,F Other offences,535
+24,Bass Coast,A Crimes against the person,4083
+25,Bass Coast,B Property and deception offences,10160
+26,Bass Coast,C Drug offences,901
+27,Bass Coast,D Public order and security offences,1476
+28,Bass Coast,E Justice procedures offences,2139
+29,Bass Coast,F Other offences,141
+30,Baw Baw,A Crimes against the person,5076
+31,Baw Baw,B Property and deception offences,14723
+32,Baw Baw,C Drug offences,1575
+33,Baw Baw,D Public order and security offences,2006
+34,Baw Baw,E Justice procedures offences,3166
+35,Baw Baw,F Other offences,450
+36,Bayside,A Crimes against the person,3990
+37,Bayside,B Property and deception offences,27003
+38,Bayside,C Drug offences,1201
+39,Bayside,D Public order and security offences,1814
+40,Bayside,E Justice procedures offences,2397
+41,Bayside,F Other offences,355
+42,Benalla,A Crimes against the person,2050
+43,Benalla,B Property and deception offences,4451
+44,Benalla,C Drug offences,426
+45,Benalla,D Public order and security offences,601
+46,Benalla,E Justice procedures offences,1199
+47,Benalla,F Other offences,70
+48,Boroondara,A Crimes against the person,5577
+49,Boroondara,B Property and deception offences,46972
+50,Boroondara,C Drug offences,1736
+51,Boroondara,D Public order and security offences,2210
+52,Boroondara,E Justice procedures offences,2676
+53,Boroondara,F Other offences,394
+54,Brimbank,A Crimes against the person,21119
+55,Brimbank,B Property and deception offences,95618
+56,Brimbank,C Drug offences,6208
+57,Brimbank,D Public order and security offences,6238
+58,Brimbank,E Justice procedures offences,16088
+59,Brimbank,F Other offences,1796
+60,Buloke,A Crimes against the person,399
+61,Buloke,B Property and deception offences,1184
+62,Buloke,C Drug offences,145
+63,Buloke,D Public order and security offences,153
+64,Buloke,E Justice procedures offences,112
+65,Buloke,F Other offences,44
+66,Campaspe,A Crimes against the person,3675
+67,Campaspe,B Property and deception offences,14281
+68,Campaspe,C Drug offences,820
+69,Campaspe,D Public order and security offences,1878
+70,Campaspe,E Justice procedures offences,3605
+71,Campaspe,F Other offences,210
+72,Cardinia,A Crimes against the person,7690
+73,Cardinia,B Property and deception offences,27978
+74,Cardinia,C Drug offences,1982
+75,Cardinia,D Public order and security offences,2389
+76,Cardinia,E Justice procedures offences,4510
+77,Cardinia,F Other offences,906
+78,Casey,A Crimes against the person,27141
+79,Casey,B Property and deception offences,92429
+80,Casey,C Drug offences,6296
+81,Casey,D Public order and security offences,5590
+82,Casey,E Justice procedures offences,12880
+83,Casey,F Other offences,1650
+84,Central Goldfields,A Crimes against the person,1912
+85,Central Goldfields,B Property and deception offences,3987
+86,Central Goldfields,C Drug offences,351
+87,Central Goldfields,D Public order and security offences,720
+88,Central Goldfields,E Justice procedures offences,1414
+89,Central Goldfields,F Other offences,69
+90,Colac-Otway,A Crimes against the person,2466
+91,Colac-Otway,B Property and deception offences,6584
+92,Colac-Otway,C Drug offences,552
+93,Colac-Otway,D Public order and security offences,1199
+94,Colac-Otway,E Justice procedures offences,1286
+95,Colac-Otway,F Other offences,246
+96,Corangamite,A Crimes against the person,1141
+97,Corangamite,B Property and deception offences,3253
+98,Corangamite,C Drug offences,244
+99,Corangamite,D Public order and security offences,344
+100,Corangamite,E Justice procedures offences,538
+101,Corangamite,F Other offences,138
+102,Darebin,A Crimes against the person,12662
+103,Darebin,B Property and deception offences,82450
+104,Darebin,C Drug offences,3464
+105,Darebin,D Public order and security offences,4337
+106,Darebin,E Justice procedures offences,7376
+107,Darebin,F Other offences,1178
+108,East Gippsland,A Crimes against the person,7023
+109,East Gippsland,B Property and deception offences,15184
+110,East Gippsland,C Drug offences,1375
+111,East Gippsland,D Public order and security offences,2792
+112,East Gippsland,E Justice procedures offences,4222
+113,East Gippsland,F Other offences,280
+114,Frankston,A Crimes against the person,15613
+115,Frankston,B Property and deception offences,61271
+116,Frankston,C Drug offences,4865
+117,Frankston,D Public order and security offences,9448
+118,Frankston,E Justice procedures offences,15752
+119,Frankston,F Other offences,1515
+120,Gannawarra,A Crimes against the person,954
+121,Gannawarra,B Property and deception offences,2335
+122,Gannawarra,C Drug offences,246
+123,Gannawarra,D Public order and security offences,555
+124,Gannawarra,E Justice procedures offences,749
+125,Gannawarra,F Other offences,93
+126,Glen Eira,A Crimes against the person,6027
+127,Glen Eira,B Property and deception offences,37322
+128,Glen Eira,C Drug offences,1740
+129,Glen Eira,D Public order and security offences,2583
+130,Glen Eira,E Justice procedures offences,2897
+131,Glen Eira,F Other offences,633
+132,Glenelg,A Crimes against the person,2052
+133,Glenelg,B Property and deception offences,6589
+134,Glenelg,C Drug offences,676
+135,Glenelg,D Public order and security offences,969
+136,Glenelg,E Justice procedures offences,1556
+137,Glenelg,F Other offences,109
+138,Golden Plains,A Crimes against the person,745
+139,Golden Plains,B Property and deception offences,3278
+140,Golden Plains,C Drug offences,120
+141,Golden Plains,D Public order and security offences,159
+142,Golden Plains,E Justice procedures offences,337
+143,Golden Plains,F Other offences,32
+144,Greater Bendigo,A Crimes against the person,11271
+145,Greater Bendigo,B Property and deception offences,38829
+146,Greater Bendigo,C Drug offences,2445
+147,Greater Bendigo,D Public order and security offences,5501
+148,Greater Bendigo,E Justice procedures offences,10236
+149,Greater Bendigo,F Other offences,427
+150,Greater Dandenong,A Crimes against the person,21545
+151,Greater Dandenong,B Property and deception offences,76045
+152,Greater Dandenong,C Drug offences,6788
+153,Greater Dandenong,D Public order and security offences,10713
+154,Greater Dandenong,E Justice procedures offences,16393
+155,Greater Dandenong,F Other offences,2278
+156,Greater Geelong,A Crimes against the person,21390
+157,Greater Geelong,B Property and deception offences,104390
+158,Greater Geelong,C Drug offences,4315
+159,Greater Geelong,D Public order and security offences,9863
+160,Greater Geelong,E Justice procedures offences,13877
+161,Greater Geelong,F Other offences,1039
+162,Greater Shepparton,A Crimes against the person,9270
+163,Greater Shepparton,B Property and deception offences,32132
+164,Greater Shepparton,C Drug offences,2655
+165,Greater Shepparton,D Public order and security offences,4641
+166,Greater Shepparton,E Justice procedures offences,7899
+167,Greater Shepparton,F Other offences,322
+168,Hepburn,A Crimes against the person,1008
+169,Hepburn,B Property and deception offences,4072
+170,Hepburn,C Drug offences,128
+171,Hepburn,D Public order and security offences,198
+172,Hepburn,E Justice procedures offences,464
+173,Hepburn,F Other offences,68
+174,Hindmarsh,A Crimes against the person,579
+175,Hindmarsh,B Property and deception offences,1003
+176,Hindmarsh,C Drug offences,191
+177,Hindmarsh,D Public order and security offences,153
+178,Hindmarsh,E Justice procedures offences,226
+179,Hindmarsh,F Other offences,22
+180,Hobsons Bay,A Crimes against the person,7277
+181,Hobsons Bay,B Property and deception offences,35240
+182,Hobsons Bay,C Drug offences,1741
+183,Hobsons Bay,D Public order and security offences,2754
+184,Hobsons Bay,E Justice procedures offences,3804
+185,Hobsons Bay,F Other offences,695
+186,Horsham,A Crimes against the person,3445
+187,Horsham,B Property and deception offences,6958
+188,Horsham,C Drug offences,916
+189,Horsham,D Public order and security offences,1450
+190,Horsham,E Justice procedures offences,2471
+191,Horsham,F Other offences,138
+192,Hume,A Crimes against the person,23172
+193,Hume,B Property and deception offences,89859
+194,Hume,C Drug offences,5687
+195,Hume,D Public order and security offences,6118
+196,Hume,E Justice procedures offences,16333
+197,Hume,F Other offences,2316
+198,Indigo,A Crimes against the person,712
+199,Indigo,B Property and deception offences,2194
+200,Indigo,C Drug offences,160
+201,Indigo,D Public order and security offences,348
+202,Indigo,E Justice procedures offences,265
+203,Indigo,F Other offences,56
+204,Kingston,A Crimes against the person,10171
+205,Kingston,B Property and deception offences,52565
+206,Kingston,C Drug offences,3060
+207,Kingston,D Public order and security offences,4432
+208,Kingston,E Justice procedures offences,8040
+209,Kingston,F Other offences,933
+210,Knox,A Crimes against the person,10702
+211,Knox,B Property and deception offences,51934
+212,Knox,C Drug offences,3998
+213,Knox,D Public order and security offences,3867
+214,Knox,E Justice procedures offences,6332
+215,Knox,F Other offences,653
+216,Latrobe,A Crimes against the person,18658
+217,Latrobe,B Property and deception offences,45073
+218,Latrobe,C Drug offences,3176
+219,Latrobe,D Public order and security offences,6641
+220,Latrobe,E Justice procedures offences,14056
+221,Latrobe,F Other offences,479
+222,Loddon,A Crimes against the person,670
+223,Loddon,B Property and deception offences,1920
+224,Loddon,C Drug offences,136
+225,Loddon,D Public order and security offences,182
+226,Loddon,E Justice procedures offences,354
+227,Loddon,F Other offences,50
+228,Macedon Ranges,A Crimes against the person,2545
+229,Macedon Ranges,B Property and deception offences,9107
+230,Macedon Ranges,C Drug offences,710
+231,Macedon Ranges,D Public order and security offences,862
+232,Macedon Ranges,E Justice procedures offences,1873
+233,Macedon Ranges,F Other offences,339
+234,Manningham,A Crimes against the person,4560
+235,Manningham,B Property and deception offences,24685
+236,Manningham,C Drug offences,1152
+237,Manningham,D Public order and security offences,996
+238,Manningham,E Justice procedures offences,1962
+239,Manningham,F Other offences,239
+240,Mansfield,A Crimes against the person,606
+241,Mansfield,B Property and deception offences,1861
+242,Mansfield,C Drug offences,149
+243,Mansfield,D Public order and security offences,412
+244,Mansfield,E Justice procedures offences,339
+245,Mansfield,F Other offences,151
+246,Maribyrnong,A Crimes against the person,7988
+247,Maribyrnong,B Property and deception offences,49886
+248,Maribyrnong,C Drug offences,2937
+249,Maribyrnong,D Public order and security offences,4205
+250,Maribyrnong,E Justice procedures offences,3963
+251,Maribyrnong,F Other offences,763
+252,Maroondah,A Crimes against the person,8099
+253,Maroondah,B Property and deception offences,34590
+254,Maroondah,C Drug offences,2089
+255,Maroondah,D Public order and security offences,3694
+256,Maroondah,E Justice procedures offences,9012
+257,Maroondah,F Other offences,429
+258,Melbourne,A Crimes against the person,32518
+259,Melbourne,B Property and deception offences,142201
+260,Melbourne,C Drug offences,12886
+261,Melbourne,D Public order and security offences,38972
+262,Melbourne,E Justice procedures offences,24789
+263,Melbourne,F Other offences,5719
+264,Melton,A Crimes against the person,13232
+265,Melton,B Property and deception offences,53761
+266,Melton,C Drug offences,2583
+267,Melton,D Public order and security offences,2886
+268,Melton,E Justice procedures offences,6660
+269,Melton,F Other offences,964
+270,Mildura,A Crimes against the person,8630
+271,Mildura,B Property and deception offences,25495
+272,Mildura,C Drug offences,2346
+273,Mildura,D Public order and security offences,5500
+274,Mildura,E Justice procedures offences,6403
+275,Mildura,F Other offences,235
+276,Mitchell,A Crimes against the person,5934
+277,Mitchell,B Property and deception offences,13284
+278,Mitchell,C Drug offences,1352
+279,Mitchell,D Public order and security offences,1852
+280,Mitchell,E Justice procedures offences,3467
+281,Mitchell,F Other offences,333
+282,Moira,A Crimes against the person,2309
+283,Moira,B Property and deception offences,7598
+284,Moira,C Drug offences,873
+285,Moira,D Public order and security offences,994
+286,Moira,E Justice procedures offences,1589
+287,Moira,F Other offences,163
+288,Monash,A Crimes against the person,9846
+289,Monash,B Property and deception offences,58016
+290,Monash,C Drug offences,2435
+291,Monash,D Public order and security offences,2926
+292,Monash,E Justice procedures offences,4432
+293,Monash,F Other offences,937
+294,Moonee Valley,A Crimes against the person,8440
+295,Moonee Valley,B Property and deception offences,46947
+296,Moonee Valley,C Drug offences,2910
+297,Moonee Valley,D Public order and security offences,3382
+298,Moonee Valley,E Justice procedures offences,4226
+299,Moonee Valley,F Other offences,769
+300,Moorabool,A Crimes against the person,2529
+301,Moorabool,B Property and deception offences,10250
+302,Moorabool,C Drug offences,556
+303,Moorabool,D Public order and security offences,786
+304,Moorabool,E Justice procedures offences,1612
+305,Moorabool,F Other offences,425
+306,Moreland,A Crimes against the person,13511
+307,Moreland,B Property and deception offences,77250
+308,Moreland,C Drug offences,2854
+309,Moreland,D Public order and security offences,3944
+310,Moreland,E Justice procedures offences,6807
+311,Moreland,F Other offences,978
+312,Mornington Peninsula,A Crimes against the person,11125
+313,Mornington Peninsula,B Property and deception offences,49092
+314,Mornington Peninsula,C Drug offences,3320
+315,Mornington Peninsula,D Public order and security offences,7370
+316,Mornington Peninsula,E Justice procedures offences,8066
+317,Mornington Peninsula,F Other offences,1209
+318,Mount Alexander,A Crimes against the person,1235
+319,Mount Alexander,B Property and deception offences,4056
+320,Mount Alexander,C Drug offences,349
+321,Mount Alexander,D Public order and security offences,608
+322,Mount Alexander,E Justice procedures offences,1123
+323,Mount Alexander,F Other offences,87
+324,Moyne,A Crimes against the person,1122
+325,Moyne,B Property and deception offences,2606
+326,Moyne,C Drug offences,162
+327,Moyne,D Public order and security offences,366
+328,Moyne,E Justice procedures offences,409
+329,Moyne,F Other offences,50
+330,Murrindindi,A Crimes against the person,1150
+331,Murrindindi,B Property and deception offences,2843
+332,Murrindindi,C Drug offences,325
+333,Murrindindi,D Public order and security offences,525
+334,Murrindindi,E Justice procedures offences,370
+335,Murrindindi,F Other offences,158
+336,Nillumbik,A Crimes against the person,2608
+337,Nillumbik,B Property and deception offences,11730
+338,Nillumbik,C Drug offences,600
+339,Nillumbik,D Public order and security offences,610
+340,Nillumbik,E Justice procedures offences,1401
+341,Nillumbik,F Other offences,130
+342,Northern Grampians,A Crimes against the person,1853
+343,Northern Grampians,B Property and deception offences,3415
+344,Northern Grampians,C Drug offences,650
+345,Northern Grampians,D Public order and security offences,803
+346,Northern Grampians,E Justice procedures offences,932
+347,Northern Grampians,F Other offences,121
+348,Port Phillip,A Crimes against the person,11757
+349,Port Phillip,B Property and deception offences,64338
+350,Port Phillip,C Drug offences,3704
+351,Port Phillip,D Public order and security offences,8439
+352,Port Phillip,E Justice procedures offences,5220
+353,Port Phillip,F Other offences,1558
+354,Pyrenees,A Crimes against the person,642
+355,Pyrenees,B Property and deception offences,2090
+356,Pyrenees,C Drug offences,170
+357,Pyrenees,D Public order and security offences,145
+358,Pyrenees,E Justice procedures offences,231
+359,Pyrenees,F Other offences,66
+360,Queenscliffe,A Crimes against the person,98
+361,Queenscliffe,B Property and deception offences,868
+362,Queenscliffe,C Drug offences,9
+363,Queenscliffe,D Public order and security offences,53
+364,Queenscliffe,E Justice procedures offences,47
+365,Queenscliffe,F Other offences,13
+366,South Gippsland,A Crimes against the person,2264
+367,South Gippsland,B Property and deception offences,5317
+368,South Gippsland,C Drug offences,402
+369,South Gippsland,D Public order and security offences,625
+370,South Gippsland,E Justice procedures offences,1528
+371,South Gippsland,F Other offences,99
+372,Southern Grampians,A Crimes against the person,1689
+373,Southern Grampians,B Property and deception offences,4201
+374,Southern Grampians,C Drug offences,618
+375,Southern Grampians,D Public order and security offences,974
+376,Southern Grampians,E Justice procedures offences,1302
+377,Southern Grampians,F Other offences,123
+378,Stonnington,A Crimes against the person,8288
+379,Stonnington,B Property and deception offences,57842
+380,Stonnington,C Drug offences,2972
+381,Stonnington,D Public order and security offences,6036
+382,Stonnington,E Justice procedures offences,3753
+383,Stonnington,F Other offences,1124
+384,Strathbogie,A Crimes against the person,878
+385,Strathbogie,B Property and deception offences,2355
+386,Strathbogie,C Drug offences,182
+387,Strathbogie,D Public order and security offences,231
+388,Strathbogie,E Justice procedures offences,377
+389,Strathbogie,F Other offences,62
+390,Surf Coast,A Crimes against the person,1342
+391,Surf Coast,B Property and deception offences,7321
+392,Surf Coast,C Drug offences,282
+393,Surf Coast,D Public order and security offences,798
+394,Surf Coast,E Justice procedures offences,603
+395,Surf Coast,F Other offences,123
+396,Swan Hill,A Crimes against the person,3567
+397,Swan Hill,B Property and deception offences,7029
+398,Swan Hill,C Drug offences,831
+399,Swan Hill,D Public order and security offences,1728
+400,Swan Hill,E Justice procedures offences,2987
+401,Swan Hill,F Other offences,233
+402,Towong,A Crimes against the person,391
+403,Towong,B Property and deception offences,925
+404,Towong,C Drug offences,56
+405,Towong,D Public order and security offences,193
+406,Towong,E Justice procedures offences,128
+407,Towong,F Other offences,27
+408,Wangaratta,A Crimes against the person,3269
+409,Wangaratta,B Property and deception offences,7767
+410,Wangaratta,C Drug offences,1198
+411,Wangaratta,D Public order and security offences,2578
+412,Wangaratta,E Justice procedures offences,2148
+413,Wangaratta,F Other offences,211
+414,Warrnambool,A Crimes against the person,4546
+415,Warrnambool,B Property and deception offences,11092
+416,Warrnambool,C Drug offences,1389
+417,Warrnambool,D Public order and security offences,2189
+418,Warrnambool,E Justice procedures offences,3300
+419,Warrnambool,F Other offences,167
+420,Wellington,A Crimes against the person,6351
+421,Wellington,B Property and deception offences,15555
+422,Wellington,C Drug offences,1039
+423,Wellington,D Public order and security offences,2078
+424,Wellington,E Justice procedures offences,4063
+425,Wellington,F Other offences,211
+426,West Wimmera,A Crimes against the person,287
+427,West Wimmera,B Property and deception offences,594
+428,West Wimmera,C Drug offences,113
+429,West Wimmera,D Public order and security offences,85
+430,West Wimmera,E Justice procedures offences,86
+431,West Wimmera,F Other offences,15
+432,Whitehorse,A Crimes against the person,7871
+433,Whitehorse,B Property and deception offences,45482
+434,Whitehorse,C Drug offences,1605
+435,Whitehorse,D Public order and security offences,2271
+436,Whitehorse,E Justice procedures offences,3804
+437,Whitehorse,F Other offences,657
+438,Whittlesea,A Crimes against the person,17563
+439,Whittlesea,B Property and deception offences,74751
+440,Whittlesea,C Drug offences,3952
+441,Whittlesea,D Public order and security offences,3283
+442,Whittlesea,E Justice procedures offences,8957
+443,Whittlesea,F Other offences,1125
+444,Wodonga,A Crimes against the person,4492
+445,Wodonga,B Property and deception offences,14267
+446,Wodonga,C Drug offences,1146
+447,Wodonga,D Public order and security offences,1738
+448,Wodonga,E Justice procedures offences,3018
+449,Wodonga,F Other offences,293
+450,Wyndham,A Crimes against the person,16372
+451,Wyndham,B Property and deception offences,77205
+452,Wyndham,C Drug offences,3430
+453,Wyndham,D Public order and security offences,4528
+454,Wyndham,E Justice procedures offences,10060
+455,Wyndham,F Other offences,1511
+456,Yarra,A Crimes against the person,10957
+457,Yarra,B Property and deception offences,71650
+458,Yarra,C Drug offences,4849
+459,Yarra,D Public order and security offences,8183
+460,Yarra,E Justice procedures offences,5732
+461,Yarra,F Other offences,1405
+462,Yarra Ranges,A Crimes against the person,9394
+463,Yarra Ranges,B Property and deception offences,34400
+464,Yarra Ranges,C Drug offences,2467
+465,Yarra Ranges,D Public order and security offences,3262
+466,Yarra Ranges,E Justice procedures offences,5646
+467,Yarra Ranges,F Other offences,924
+468,Yarriambiack,A Crimes against the person,780
+469,Yarriambiack,B Property and deception offences,1514
+470,Yarriambiack,C Drug offences,88
+471,Yarriambiack,D Public order and security offences,232
+472,Yarriambiack,E Justice procedures offences,297
+473,Yarriambiack,F Other offences,50
