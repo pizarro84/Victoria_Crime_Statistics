@@ -22,30 +22,22 @@ if not engine.has_table("CRIME_LGA"):
         Column('Year', Integer),
         Column('Local_Government_Area', String),
         Column('Offence_Division', String),
-        Column('Incidents_Recorded', Float),        
+        Column('Incidents_Recorded', Integer),        
     )
 
     meta.create_all(engine)
     
-    """
-    Let's read in the csv data and put into a list to read into
-    our newly created table
-    """
     seed_data = list()
 
     with open('./02-Data/crimesdata_pre_aggregate.csv', newline='') as input_file:
         reader = csv.DictReader(input_file)       #csv.reader is used to read a file
         for row in reader:
             seed_data.append(row)
-    
-    """
-    With our newly created table let's insert the row we've read in
-    and with that we're done
-    """
+            
     with engine.connect() as conn:
         conn.execute(new_table.insert(), seed_data)
 
-    print("Seed Data Imported")
+    print("Data Import Successful")
 else:
     print("Table already exists")
 

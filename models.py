@@ -2,17 +2,19 @@ def create_classes(db):
     class CRIME_LGA(db.Model):
         __tablename__ = 'CRIME_LGA'
 
+        row_id = db.Column(db.Integer, primary_key=True)
         year = db.Column(db.Integer)
-        year_ending = db.Column(db.String(64))
-        police_service_area=db.Column(db.String(64))
         local_government_area=db.Column(db.String(64))
         offence_division=db.Column(db.String(64))
-        offence_subdivision=db.Column(db.String(64))
-        Offence_subgroup=db.Column(db.String(64))
-        incidents_recorded = db.Column(db.double)
-        psa_rate_per_100k_population = db.Column(db.double)
-        lga_rate_per_100k_population = db.Column(db.double)            
+        incidents_recorded = db.Column(db.Integer)          
 
         def __repr__(self):
-            return '<crime %r>' % (self.name)
+            """
+                results = db.session.query(
+                                -> this one replace with (crime_stats_vic) AvatarHistory.race,
+                                func.count(AvatarHistory.race).label("total")
+                                )
+            """
+            return f'<crime_stats_vic {self.id}>'
+    
     return CRIME_LGA
