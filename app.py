@@ -140,15 +140,15 @@ def values(for_column, group_by = None):
     This route will return all of the values in a column 
     optionally grouped by another column.
 
-    For example http://localhost:5000/api/values/race/
+    For example http://localhost:5000/api/values/year/
     [
-        "Orc", 
-        "Tauren", 
-        "Troll", 
-        "Undead"
+        "2011", 
+        "2012", 
+        "2013", 
+        "2014"
     ]
 
-    Whereas http://localhost:5000/api/values/race/char_class
+    Whereas http://localhost:5000/api/values/year/char_class
     {
         "Druid": [
             "Tauren", "Tauren", "Tauren", "Tauren", "Tauren", 
@@ -203,7 +203,7 @@ def values(for_column, group_by = None):
 
     return query_results_to_dicts(values_for_groupby)
 
-@app.route("/api/count_by_incidents")
+@app.route("/api/sum_by_year")
 def count_by_lga():
     
     results = db.session.query(
@@ -215,7 +215,103 @@ def count_by_lga():
         crime_stats_vic.year
     ).all()
 
-    return query_results_to_dicts(results)    
+    return query_results_to_dicts(results)
+
+@app.route("/api/sum_by_incidents")
+def count_by_offence():
+    
+    results = db.session.query(
+        crime_stats_vic.offence_division,
+        func.sum(crime_stats_vic.incidents_recorded).label("total")
+    )
+
+    results = results.group_by(
+        crime_stats_vic.offence_division
+    ).all()
+
+    return query_results_to_dicts(results)
+
+@app.route("/api/where/<local_government_area>")
+def where(local_government_area):
+    
+    results = db.engine.execute(text("""
+        SELECT * FROM crime_lga 
+        WHERE UPPER(local_government_area) = :local_government_area
+    """).bindparams(
+        local_government_area=local_government_area.upper().strip()
+    ))
+
+    return jsonify([dict(row) for row in results])
+
+@app.route("/api/sum_by/<sum_by>", defaults={'optional_sum_by': None})
+@app.route("/api/sum_by/<sum_by>/<optional_sum_by>")
+def sum_by(sum_by, optional_sum_by=None):
+    """
+    In order to dyanmically retrieve the attribute passed on the 
+    value of `count_by` or `optional_count_by` we will use the built-in
+    method `getattr` for a reference see the official python docs:
+    https://docs.python.org/3/library/functions.html#getattr
+
+    For instance http://localhost:5000/api/count_by/race/char_class 
+    will return data in form of:
+
+    [
+        {"race": "Orc", "char_class": "Hunter", "total": 178}, 
+        {"race": "Orc", "char_class": "Rogue", "total": 21},
+        ...
+    ]
+
+    Whereas http://localhost:5000/api/count_by/race will return:
+    [
+        {"race": "Orc", "total": 359}, 
+        {"race": "Tauren", "total": 678}, 
+        {"race": "Troll", "total": 503}, 
+        {"race": "Undead", "total": 785}
+    ]
+    """
+
+    # first let's check if we need to filter
+    selected_offence = get_lga_param()
+   
+    # let's first handle the case we there is no `optional_count_by`
+    if optional_sum_by is None:
+        results = db.session.query(
+            getattr(crime_stats_vic, sum_by),
+            func.count(getattr(crime_stats_vic, sum_by)).label("total")
+        )
+
+        # apply the query stirng filter if present
+        if selected_offence is not None:
+            results = results.filter(crime_stats_vic.local_government_area == selected_offence)
+
+        results = results.group_by(
+            getattr(crime_stats_vic, sum_by)
+        ).order_by(
+            getattr(crime_stats_vic, sum_by)
+        ).all()
+
+    else:
+        # lets handle grouping by two columns
+        results = db.session.query(
+            getattr(crime_stats_vic, sum_by),
+            getattr(crime_stats_vic, optional_sum_by),
+            func.count(getattr(crime_stats_vic, sum_by)).label("total")
+        )
+
+        if selected_offence is not None:
+            results = results.filter(crime_stats_vic.offence_division == selected_offence)
+
+        results = results.group_by(
+            getattr(crime_stats_vic, sum_by),
+            getattr(crime_stats_vic, optional_sum_by)
+        ).order_by(
+            getattr(crime_stats_vic, sum_by),
+            getattr(crime_stats_vic, optional_sum_by),
+        ).all()
+
+    return query_results_to_dicts(results)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
