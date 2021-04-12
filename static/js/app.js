@@ -115,10 +115,17 @@ function getDropdownValues(dropdown_values) {
   dropdown_values.lga = document.getElementById("sel-filter-lga").value;
   dropdown_values.offence = document.getElementById("sel-filter-offence").value;
 }
+
 function displayValues() {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
-  alert(dropdown_values.year + " " + dropdown_values.lga + " " + dropdown_values.offence);
+
+  var url = "http://127.0.0.1:5000/api/query/" + dropdown_values.year + "/" 
+              + dropdown_values.lga + "/" + dropdown_values.offence;
+
+  window.open(
+    url, "Query Result",
+    "height=800,width=500,modal=yes,alwaysRaised=yes");
 }
 
 // Upon intial load of the page setup

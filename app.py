@@ -136,30 +136,6 @@ def all():
 @app.route("/api/values/<for_column>/<group_by>")
 @app.route("/api/values/<for_column>/", defaults={'group_by': None})
 def values(for_column, group_by = None):
-    """
-    This route will return all of the values in a column 
-    optionally grouped by another column.
-
-    For example http://localhost:5000/api/values/year/
-    [
-        "2011", 
-        "2012", 
-        "2013", 
-        "2014"
-    ]
-
-    Whereas http://localhost:5000/api/values/year/char_class
-    {
-        "Druid": [
-            "Tauren", "Tauren", "Tauren", "Tauren", "Tauren", 
-            "Tauren", "Tauren", "Tauren", "Tauren", "Tauren"
-            ], 
-        "Hunter": [
-            "Orc", "Orc", "Orc", "Orc", "Orc", "Orc", "Orc",
-            "Tauren", "Tauren", "Tauren", "Tauren", "Tauren"
-            ]
-    } 
-    """
     # get filter parameters
     year_param = get_year_param()
     offence_param = get_offence_param()
@@ -287,6 +263,38 @@ def sum_by(sum_by, optional_sum_by=None):
         ).all()
 
     return query_results_to_dicts(results)
+
+@app.route("/api/query/<year>/<lga>/<offence>")
+def query(year, lga, offence):
+    
+    year_clause = "";
+    lga_clause = "";
+    offence_clause="";
+
+    if year != "All":
+        year_clause = " AND year = " + year + " "
+
+    if lga != "All":
+        lga_clause = " AND UPPER(local_government_area) = UPPER(\"" + lga + "\") "
+
+    if offence != "All":
+        offence_clause = " AND UPPER(offence_division) = UPPER(\"" + offence + "\") "
+    
+    
+    results = db.engine.execute(text("WITH temp AS(SELECT * FROM crime_lga  WHERE 1 = 1 " 
+                                     + year_clause + lga_clause + offence_clause
+                                     + "), totals AS(SELECT year, local_government_area, "
+                                     + "                    SUM(incidents_recorded) total "
+                                     + "               FROM temp GROUP BY year, local_government_area "
+                                     + "              ORDER BY incidents_recorded DESC limit 10) "
+                                     + "SELECT tm.year, tm.local_government_area,tm.offence_division,"
+                                     + "       tm.incidents_recorded,tot.total "
+                                     + "  FROM temp tm, totals tot "
+                                     + " WHERE tm.year = tot.year "
+                                     + "   AND tm.local_government_area = tot.local_government_area "
+                                     + " ORDER BY total DESC, incidents_recorded DESC"))
+
+    return jsonify([dict(row) for row in results])
 
 
 if __name__ == "__main__":
