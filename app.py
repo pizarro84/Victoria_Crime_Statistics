@@ -120,6 +120,19 @@ def get_distinct_values(for_column,
 
     return values
 
+@app.route("/api/all")
+def all():
+        
+    results = db.session.query(
+        crime_stats_vic.row_id,
+        crime_stats_vic.year,
+        crime_stats_vic.local_government_area,
+        crime_stats_vic.offence_division,
+        crime_stats_vic.incidents_recorded
+    ).all()
+
+    return query_results_to_dicts(results)
+
 @app.route("/api/values/<for_column>/<group_by>")
 @app.route("/api/values/<for_column>/", defaults={'group_by': None})
 def values(for_column, group_by = None):
@@ -189,6 +202,20 @@ def values(for_column, group_by = None):
         values_for_groupby[group] = [x[1] for x in results if x[0] == group]
 
     return query_results_to_dicts(values_for_groupby)
+
+@app.route("/api/count_by_incidents")
+def count_by_lga():
+    
+    results = db.session.query(
+        crime_stats_vic.year,
+        func.sum(crime_stats_vic.incidents_recorded).label("total")
+    )
+
+    results = results.group_by(
+        crime_stats_vic.year
+    ).all()
+
+    return query_results_to_dicts(results)    
 
 if __name__ == "__main__":
     app.run(debug=True)
