@@ -246,29 +246,6 @@ def where(local_government_area):
 @app.route("/api/sum_by/<sum_by>", defaults={'optional_sum_by': None})
 @app.route("/api/sum_by/<sum_by>/<optional_sum_by>")
 def sum_by(sum_by, optional_sum_by=None):
-    """
-    In order to dyanmically retrieve the attribute passed on the 
-    value of `count_by` or `optional_count_by` we will use the built-in
-    method `getattr` for a reference see the official python docs:
-    https://docs.python.org/3/library/functions.html#getattr
-
-    For instance http://localhost:5000/api/count_by/race/char_class 
-    will return data in form of:
-
-    [
-        {"race": "Orc", "char_class": "Hunter", "total": 178}, 
-        {"race": "Orc", "char_class": "Rogue", "total": 21},
-        ...
-    ]
-
-    Whereas http://localhost:5000/api/count_by/race will return:
-    [
-        {"race": "Orc", "total": 359}, 
-        {"race": "Tauren", "total": 678}, 
-        {"race": "Troll", "total": 503}, 
-        {"race": "Undead", "total": 785}
-    ]
-    """
 
     # first let's check if we need to filter
     selected_offence = get_lga_param()
@@ -310,7 +287,6 @@ def sum_by(sum_by, optional_sum_by=None):
         ).all()
 
     return query_results_to_dicts(results)
-
 
 
 if __name__ == "__main__":

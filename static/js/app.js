@@ -3,11 +3,11 @@ function populateYearFilter() {
   // our <select> from the database. 
   const url = "api/values/year";
 
-  d3.json(url).then(function(response) {
-    
+  d3.json(url).then(function (response) {
+
     var filterOptions = ["All"];
     filterOptions = filterOptions.concat(response);
-    
+
     d3.select("#sel-filter-year")
       .selectAll("option")
       .data(filterOptions)
@@ -27,11 +27,11 @@ function populateLgaFilter() {
   // our <select> from the database. 
   const url = "api/values/local_government_area";
 
-  d3.json(url).then(function(response) {
-    
+  d3.json(url).then(function (response) {
+
     var filterOptions = ["All"];
     filterOptions = filterOptions.concat(response);
-    
+
     d3.select("#sel-filter-lga")
       .selectAll("option")
       .data(filterOptions)
@@ -51,11 +51,11 @@ function populateOffenceFilter() {
   // our <select> from the database. 
   const url = "api/values/offence_division";
 
-  d3.json(url).then(function(response) {
-    
+  d3.json(url).then(function (response) {
+
     var filterOptions = ["All"];
     filterOptions = filterOptions.concat(response);
-    
+
     d3.select("#sel-filter-offence")
       .selectAll("option")
       .data(filterOptions)
@@ -87,9 +87,9 @@ function buildIncidentPieChart(selectedincident) {
   // If we have race to filter by let's pass it
   // in as a querystring parameter
   var url = "api/sum_by_incidents";
-  
 
-  d3.json(url).then(function(response) {
+
+  d3.json(url).then(function (response) {
     // In order to render a pie chart we need to 
     // extract the labels and values from the 
     // json response. For an example see:
@@ -99,15 +99,26 @@ function buildIncidentPieChart(selectedincident) {
       values: response.map(d => d.total),
       type: 'pie'
     }];
-    
+
     var layout = {
       height: 400,
       width: 500
     };
-    
+
     Plotly.newPlot('character-races-plot', data, layout);
 
   });
+}
+
+function getDropdownValues(dropdown_values) {
+  dropdown_values.year = document.getElementById("sel-filter-year").value;
+  dropdown_values.lga = document.getElementById("sel-filter-lga").value;
+  dropdown_values.offence = document.getElementById("sel-filter-offence").value;
+}
+function displayValues() {
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+  alert(dropdown_values.year + " " + dropdown_values.lga + " " + dropdown_values.offence);
 }
 
 // Upon intial load of the page setup

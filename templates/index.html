@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vic Crime Stats</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </head>
 
 <body>
@@ -15,27 +18,32 @@
             <h1>Victoria Crime Statistics</h1>
         </div>
 
-        
+
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
                     <label for="sel-filter">Select a Year:</label>
                     <select class="form-control" id="sel-filter-year"></select>
-                  </div>                  
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
                     <label for="sel-filter">Select an LGA:</label>
                     <select class="form-control" id="sel-filter-lga"></select>
-                  </div>                  
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
                     <label for="sel-filter">Select an Offence Division:</label>
                     <select class="form-control" id="sel-filter-offence"></select>
-                  </div>                  
+                </div>
             </div>
         </div>
+
+        <div>
+            <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+        </div>
+        
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <h2>Character Races</h2>
@@ -47,11 +55,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
-
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 
 </html>
