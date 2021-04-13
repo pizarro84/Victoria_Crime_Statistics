@@ -126,6 +126,37 @@ function displayValues() {
   window.open(
     url, "Query Result",
     "height=800,width=500,modal=yes,alwaysRaised=yes");
+    
+buildIncidentPieChart();
+}
+
+
+function buildIncidentPieChart(selectedincident) {
+  // If we have race to filter by let's pass it
+  // in as a querystring parameter
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+
+  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
+
+  alert(url);
+
+  d3.json(url).then(function (response) {
+    // In order to render a pie chart we need to 
+    // extract the labels and values from the 
+    // json response. For an example see:
+    // https://plotly.com/javascript/pie-charts/ 
+    var data = [{
+      labels: response.map(d => d.offence_division),
+      values: response.map(d => d.total),
+      type: 'pie'
+    }];
+    var layout = {
+      height: 400,
+      width: 500
+    };
+    Plotly.newPlot('character-races-plot', data, layout);
+  });
 }
 
 // Upon intial load of the page setup
