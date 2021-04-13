@@ -128,6 +128,7 @@ function displayValues() {
     "height=800,width=500,modal=yes,alwaysRaised=yes");
     
 buildIncidentPieChart();
+buildIncidentBarChart();
 }
 
 
@@ -159,38 +160,49 @@ function buildIncidentPieChart(selectedincident) {
   });
 }
 
-function buildIncidentBarChart(selectedincident) {
-  // If we have race to filter by let's pass it
-  // in as a querystring parameter
+function buildIncidentBarChart(dropdown_values) {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
 
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
 
   alert(url);
+  
+  d3.json(url).then(function(response) {
 
-  d3.json(url).then(function (response) {
-    // In order to render a pie chart we need to 
-    // extract the labels and values from the 
-    // json response. For an example see:
-    // https://plotly.com/javascript/pie-charts/ 
-    var data = [{
-      x: response.map(d => d.Offence_Division),
-      y: response.map(d => d.Incidents_Recorded),
-      type: 'bar'
-    }];
+    // Using the group method in d3 we can
+    // do grouping of the received json
+    // for the purposes of creating multiple traces.
+    // https://github.com/d3/d3-array#group
+    var grouped_data = d3.group(response, d => d.Offence_Division)
+
+    var traces = Array();
+
+    // then iterating over each group by it's
+    // key we can create a trace for each group
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+    grouped_data.forEach(element => {      
+      traces.push({
+        x: element.map(d => d.Year),
+        y: element.map(d => d.Incidents_Recorded),
+        name: element[0].Offence_Division,
+        type: 'bar'
+      });
+    });
+    
     var layout = {
+      barmode: 'stack',
       height: 400,
       width: 500
     };
-    Plotly.newPlot('races-by-class-plot', data, layout);
+    
+    Plotly.newPlot('races-by-class-plot', traces, layout);
   });
 }
+
 
 // Upon intial load of the page setup
 // the visualisations and the select filter
 populateYearFilter();
 populateLgaFilter();
 populateOffenceFilter();
-buildIncidentPieChart();
-buildIncidentBarChart();
