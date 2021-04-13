@@ -40,14 +40,7 @@ def query_results_to_dicts(results):
     return simplejson.dumps(results)
 
 def get_year_param():
-    """
-    Helper method for extracting the passed value to `race`
-    in the query string - for example.
-
-    http://localhost:5000/api/values/char_class/?race=troll
-
-    Would return `"Troll"`    
-    """
+    
     selected_year = request.args.get("year")
 
     # If we receive "All" from the front-end no filtering

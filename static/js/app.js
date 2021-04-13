@@ -160,6 +160,25 @@ function buildIncidentPieChart(selectedincident) {
   });
 }
 
+function buildIncidentAllBarChart(dropdown_values) {
+  var url = "api/all";  
+
+  d3.json(url).then(function (response) {
+    
+    var data = [{
+      labels: response.map(d => d.offence_division),
+      values: response.map(d => d.incidents_recorded),
+      type: 'pie'
+    }];
+    var layout = {
+      height: 400,
+      width: 500
+    };
+    Plotly.newPlot('character-races-plot', data, layout);
+  });
+}
+
+
 function buildIncidentBarChart(dropdown_values) {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
@@ -170,22 +189,43 @@ function buildIncidentBarChart(dropdown_values) {
   
   d3.json(url).then(function(response) {
 
-    // Using the group method in d3 we can
-    // do grouping of the received json
-    // for the purposes of creating multiple traces.
-    // https://github.com/d3/d3-array#group
     var grouped_data = d3.group(response, d => d.Offence_Division)
 
     var traces = Array();
 
-    // then iterating over each group by it's
-    // key we can create a trace for each group
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
     grouped_data.forEach(element => {      
       traces.push({
         x: element.map(d => d.Year),
         y: element.map(d => d.Incidents_Recorded),
         name: element[0].Offence_Division,
+        type: 'bar'
+      });
+    });
+    
+    var layout = {
+      barmode: 'stack',
+      height: 400,
+      width: 500
+    };
+    
+    Plotly.newPlot('races-by-class-plot', traces, layout);
+  });
+}
+
+function buildALLIncidentBarChart(dropdown_values) {
+  var url = "api/all";
+  
+  d3.json(url).then(function(response) {
+
+    var grouped_data = d3.group(response, d => d.offence_division)
+
+    var traces = Array();
+
+    grouped_data.forEach(element => {      
+      traces.push({
+        x: element.map(d => d.year),
+        y: element.map(d => d.incidents_recorded),
+        name: element[0].offence_division,
         type: 'bar'
       });
     });
@@ -206,3 +246,6 @@ function buildIncidentBarChart(dropdown_values) {
 populateYearFilter();
 populateLgaFilter();
 populateOffenceFilter();
+buildALLIncidentBarChart();
+buildIncidentAllBarChart();
+
