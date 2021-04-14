@@ -17,8 +17,7 @@ function populateYearFilter() {
 
     // Bind an event to refresh the data
     // when an option is selected.
-    d3.select("#sel-filter-year").on("change", populateLgaFilter);
-    d3.select("#sel-filter-year").on("change", populateOffenceFilter);
+    d3.select("#sel-filter-year").on("change", disableDropdown);
   });
 }
 
@@ -41,8 +40,7 @@ function populateLgaFilter() {
 
     // Bind an event to refresh the data
     // when an option is selected.
-    d3.select("#sel-filter-lga").on("change", populateYearFilter);
-    d3.select("#sel-filter-lga").on("change", populateOffenceFilter);
+    d3.select("#sel-filter-lga").on("change", disableDropdown);
   });
 }
 
@@ -65,8 +63,7 @@ function populateOffenceFilter() {
 
     // Bind an event to refresh the data
     // when an option is selected.
-    d3.select("#sel-filter-offence").on("change", populateYearFilter);
-    d3.select("#sel-filter-offence").on("change", populateLgaFilter);
+    d3.select("#sel-filter-offence").on("change", disableDropdown);
   });
 }
 
@@ -240,6 +237,22 @@ function buildALLIncidentBarChart(dropdown_values) {
   });
 }
 
+function disableDropdown(){
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+
+  if (dropdown_values.year !== 'All' && dropdown_values.lga !== 'All') {
+    document.getElementById("sel-filter-offence").disabled = true;
+  } else if (dropdown_values.lga !== 'All' && dropdown_values.offence !== 'All') {
+    document.getElementById("sel-filter-year").disabled = true;
+  } else if (dropdown_values.offence !== 'All' && dropdown_values.year !== 'All') {
+    document.getElementById("sel-filter-lga").disabled = true;
+  } else {
+    document.getElementById("sel-filter-lga").disabled = false;
+    document.getElementById("sel-filter-offence").disabled = false;
+    document.getElementById("sel-filter-year").disabled = false;
+  }
+}
 
 // Upon intial load of the page setup
 // the visualisations and the select filter

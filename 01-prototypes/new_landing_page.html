@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Victoria_Crime_Statistics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #1998e2;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: white;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Crime Statistics</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+/*        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>   */  
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron" style="text-align: center">
+        <h1>Victoria Crime Statistics</h1>
+        <h2>"the Place to be for up to date information"</h2>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select a Year:</label>
+                <select class="form-control" id="sel-filter-year"></select>
+              </div>                  
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select an LGA:</label>
+                <select class="form-control" id="sel-filter-lga"></select>
+              </div>                  
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select an Offence Division:</label>
+                <select class="form-control" id="sel-filter-offence"></select>
+              </div>                  
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2>Character Races</h2>
+            <div id="character-races-plot"></div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h2>Races By Class</h2>
+            <div id="races-by-class-plot"></div>
+        </div>
+    </div> -->
+</div>
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-center"> 
+      <h1>Victoria Crime Statistics</h1>
+      <p>This page was design to help you to search for crime information for any area of Victoria completely free of charge. 
+          Our customers use this information to find out which places to buy and where to avoid.</p>
+      <hr>
+      <h3>Beautiful Victorian Crime visualisation</h3>
+      <p>What can be more beautiful that visualisation of crime statistics? As they say, a picture is worth a thousand words...</p>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>Advertise Here. Group 6 needs the money.</p>
+      </div>
+      <div class="well">
+        <p>You know you want to</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Group 6</p>
+</footer>
+
+</body>
+</html>
