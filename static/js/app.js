@@ -116,17 +116,10 @@ function getDropdownValues(dropdown_values) {
 function displayValues() {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
-
-  var url = "http://127.0.0.1:5000/api/query/" + dropdown_values.year + "/" 
-              + dropdown_values.lga + "/" + dropdown_values.offence;
-
-  window.open(
-    url, "Query Result",
-    "height=800,width=500,modal=yes,alwaysRaised=yes");
     
 buildIncidentPieChart();
 buildIncidentBarChart();
-builddatatable();
+builddatatable('D');
 }
 
 
@@ -138,7 +131,7 @@ function buildIncidentPieChart(selectedincident) {
 
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
 
-  alert(url);
+  //alert(url);
 
   d3.json(url).then(function (response) {
     // In order to render a pie chart we need to 
@@ -184,7 +177,7 @@ function buildIncidentBarChart(dropdown_values) {
 
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
 
-  alert(url);
+  //alert(url);
   
   d3.json(url).then(function(response) {
 
@@ -257,13 +250,18 @@ function disableDropdown(){
 }
 
 
-function builddatatable(){
+function builddatatable(ttype){
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
-
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
 
-  alert(url);
+  // Get all data
+  if (ttype === 'A') {
+    url = 'api/query/All/All/All';
+  }
+  
+
+  //alert(url);
   
   d3.json(url).then(function(response) {
  
@@ -301,3 +299,4 @@ populateLgaFilter();
 populateOffenceFilter();
 buildALLIncidentBarChart();
 buildIncidentAllBarChart();
+builddatatable('A');
