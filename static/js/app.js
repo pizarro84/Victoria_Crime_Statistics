@@ -107,6 +107,8 @@ function buildIncidentPieChart(selectedincident) {
   });
 }
 
+
+
 function getDropdownValues(dropdown_values) {
   dropdown_values.year = document.getElementById("sel-filter-year").value;
   dropdown_values.lga = document.getElementById("sel-filter-lga").value;
@@ -120,8 +122,42 @@ function displayValues() {
 buildIncidentPieChart();
 buildIncidentBarChart();
 builddatatable('D');
+buildIncidentBubbleChart();
 }
 
+function buildIncidentBubbleChart(selectedincident) {
+  // If we have race to filter by let's pass it
+  // in as a querystring parameter
+
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
+
+
+  d3.json(url).then(function (response) {
+    // In order to render a pie chart we need to 
+    // extract the labels and values from the 
+    // json response. For an example see:
+    // https://plotly.com/javascript/pie-charts/ 
+    alert(url);
+    var data = [{
+      x: response.map(d => d.Year),
+      y: response.map(d => d.Incidents_Recorded),
+      mode: 'markers',
+      marker:{
+        size: [20,20, 20, 20,20,20,20,20,20,20]
+      }
+    }];
+
+    var layout = {
+      height: 400,
+      width: 500
+    };
+
+    Plotly.newPlot('bubble-plot', data, layout);
+
+  });
+}
 
 function buildIncidentPieChart(selectedincident) {
   // If we have race to filter by let's pass it
@@ -203,6 +239,8 @@ function buildIncidentBarChart(dropdown_values) {
     Plotly.newPlot('races-by-class-plot', traces, layout);
   });
 }
+
+
 
 function buildALLIncidentBarChart(dropdown_values) {
   var url = "api/all";
