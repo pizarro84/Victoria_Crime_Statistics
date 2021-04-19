@@ -19,10 +19,10 @@ if not engine.has_table("CRIME_LGA"):
     new_table = Table(
         'CRIME_LGA', meta,
         Column('row_id', Integer),
-        Column('Year', Integer),
-        Column('Local_Government_Area', String),
-        Column('Offence_Division', String),
-        Column('Incidents_Recorded', Integer),        
+        Column('year', Integer),
+        Column('local_government_area', String),
+        Column('offence_division', String),
+        Column('incidents_recorded', Integer),        
     )
 
     meta.create_all(engine)
