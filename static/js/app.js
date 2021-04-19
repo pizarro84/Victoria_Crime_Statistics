@@ -102,7 +102,9 @@ function buildIncidentPieChart(selectedincident) {
       width: 500
     };
 
-    Plotly.newPlot('character-races-plot', data, layout);
+    var config = {responsive: true};
+
+    Plotly.newPlot('character-races-plot', data, layout,config);
 
   });
 }
@@ -126,8 +128,6 @@ buildIncidentBubbleChart();
 }
 
 function buildIncidentBubbleChart(selectedincident) {
-  // If we have race to filter by let's pass it
-  // in as a querystring parameter
 
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
@@ -135,11 +135,6 @@ function buildIncidentBubbleChart(selectedincident) {
 
 
   d3.json(url).then(function (response) {
-    // In order to render a pie chart we need to 
-    // extract the labels and values from the 
-    // json response. For an example see:
-    // https://plotly.com/javascript/pie-charts/ 
-    alert(url);
     var data = [{
       x: response.map(d => d.Year),
       y: response.map(d => d.Incidents_Recorded),
@@ -149,41 +144,49 @@ function buildIncidentBubbleChart(selectedincident) {
       }
     }];
 
-    var layout = {
-      height: 400,
-      width: 500
-    };
+    var config = {responsive: true};
 
-    Plotly.newPlot('bubble-plot', data, layout);
+    Plotly.newPlot('bubble-plot', data, config);
+
+  });
+}
+
+function getAllBubbleChart() {
+  var url = 'api/query/All/All/All';
+
+  d3.json(url).then(function (response) {
+    var data = [{
+      x: response.map(d => d.Year),
+      y: response.map(d => d.Incidents_Recorded),
+      mode: 'markers',
+      marker:{
+        size: [20,20, 20, 20,20,20,20,20,20,20]
+      }
+    }];
+
+    var config = {responsive: true};
+
+    Plotly.newPlot('bubble-plot', data, config);
 
   });
 }
 
 function buildIncidentPieChart(selectedincident) {
-  // If we have race to filter by let's pass it
-  // in as a querystring parameter
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
 
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
 
-  //alert(url);
-
   d3.json(url).then(function (response) {
-    // In order to render a pie chart we need to 
-    // extract the labels and values from the 
-    // json response. For an example see:
-    // https://plotly.com/javascript/pie-charts/ 
     var data = [{
       labels: response.map(d => d.Offence_Division),
       values: response.map(d => d.Incidents_Recorded),
       type: 'pie'
     }];
-    var layout = {
-      height: 400,
-      width: 500
-    };
-    Plotly.newPlot('character-races-plot', data, layout);
+
+    var config = {responsive: true};
+
+    Plotly.newPlot('character-races-plot', data, config);
   });
 }
 
@@ -197,11 +200,9 @@ function buildIncidentAllBarChart(dropdown_values) {
       values: response.map(d => d.incidents_recorded),
       type: 'pie'
     }];
-    var layout = {
-      height: 400,
-      width: 500
-    };
-    Plotly.newPlot('character-races-plot', data, layout);
+
+    var config = {responsive: true};
+    Plotly.newPlot('character-races-plot', data, config);
   });
   
 }
@@ -212,8 +213,6 @@ function buildIncidentBarChart(dropdown_values) {
   getDropdownValues(dropdown_values);
 
   var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
-
-  //alert(url);
   
   d3.json(url).then(function(response) {
 
@@ -231,12 +230,12 @@ function buildIncidentBarChart(dropdown_values) {
     });
     
     var layout = {
-      barmode: 'stack',
-      height: 400,
-      width: 500
+      barmode: 'stack'
     };
+
+    var config = {responsive: true};
     
-    Plotly.newPlot('races-by-class-plot', traces, layout);
+    Plotly.newPlot('races-by-class-plot', traces, layout, config);
   });
 }
 
@@ -288,48 +287,6 @@ function disableDropdown(){
 }
 
 
-function builddatatable(ttype){
-  var dropdown_values = new Object();
-  getDropdownValues(dropdown_values);
-  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
-
-  // Get all data
-  if (ttype === 'A') {
-    url = 'api/query/All/All/All';
-  }
-  
-
-  //alert(url);
-  
-  d3.json(url).then(function(response) {
- 
- var tableData = response;
- 
-  var tbody = d3.select("tbody");
- 
- function buildTable(data) {
-   // First, clear out any existing data
-   tbody.html("");
- 
-   // Next, loop through each object in the data
-   // and append a row and cells for each value in the row
-   data.forEach((dataRow) => {
-     // Append a row to the table body
-     var row = tbody.append("tr");
- 
-     // Loop through each field in the dataRow and add
-     // each value as a table cell (td)
-     Object.values(dataRow).forEach((val) => {
-       var cell = row.append("td");
-       cell.text(val);
-     });
-   });
- } 
- buildTable(tableData); 
-});
-};
-
-
 // Upon intial load of the page setup
 // the visualisations and the select filter
 populateYearFilter();
@@ -337,4 +294,4 @@ populateLgaFilter();
 populateOffenceFilter();
 buildALLIncidentBarChart();
 buildIncidentAllBarChart();
-builddatatable('A');
+getAllBubbleChart();
