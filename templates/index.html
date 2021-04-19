@@ -9,12 +9,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Keania+One&family=Raleway&display=swap" rel="stylesheet">
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -53,6 +55,50 @@
                 height: auto;
             }
         }
+
+
+
+        .pagetitle {
+            font-family: 'Keania One', cursive;
+            line-height: 2;
+            font-size: 100px;
+            word-spacing: 4px;
+            color: cornsilk;
+        }
+
+        .pagetext {
+            font-family: 'Raleway', sans-serif;
+            font-size: large;
+            bottom: 50%;
+            color: cornsilk;
+        }
+
+        .jumbotron {
+            background-color: rgb(9, 9, 122);
+        }
+
+        label {
+            color: cornsilk;
+        }
+
+        .hlabel {
+            color: cornsilk;
+            background: #000;
+        }
+
+        .textcont {
+            min-height: 140px;
+        }
+
+        .jumbo2 {
+            min-height: 200px;
+            color: cornsilk;
+        }
+
+        .footah {
+            color: cornsilk;
+            background: #000;
+        }
     </style>
 </head>
 
@@ -61,19 +107,15 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="#">Logo</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
+                    <li><a href="/heatmap" target="popup"
+                            onclick="window.open('/heatmap','name','width=801,height=601')">Heatmap</a></li>
+                    <li><a href="/alldata" target="_blank">All Data</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Crime Statistics</a></li>
-                    <li><a href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>     -->
@@ -83,112 +125,84 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="jumbotron" style="text-align: center">
-            <h1>Victoria Crime Statistics</h1>
-            <h2>"the Place to be for up to date information"</h2>
-        </div>
+    <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+            <div class="row h-300 align-items-center">
+                <div class="col-lg-12 align-items-center">
+                    <h1 class="pagetitle">Victoria Crime Statistics</h1>
+                    <p class="pagetext">"the Place to be for up to date information"</p>
 
-
-        <div class="row">
-            <div class="col-sm-4 col-sm-12">
-                <div class="form-group">
-                    <label for="sel-filter">Select a Year:</label>
-                    <select class="form-control" id="sel-filter-year"></select>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-12">
-                <div class="form-group">
-                    <label for="sel-filter">Select an LGA:</label>
-                    <select class="form-control" id="sel-filter-lga"></select>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-12">
-                <div class="form-group">
-                    <label for="sel-filter">Select an Offence Division:</label>
-                    <select class="form-control" id="sel-filter-offence"></select>
                 </div>
             </div>
         </div>
+    </header>
 
-        <div>
-            <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+    <div class="jumbotron textcont" style="text-align: center">
+        <div class="col-sm-2 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select a Year:</label>
+                <select class="form-control" id="sel-filter-year"></select>
+            </div>
         </div>
+        <div class="col-sm-4 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select an LGA:</label>
+                <select class="form-control" id="sel-filter-lga"></select>
+            </div>
+        </div>
+        <div class="col-sm-4 col-sm-12">
+            <div class="form-group">
+                <label for="sel-filter">Select an Offence Division:</label>
+                <select class="form-control" id="sel-filter-offence"></select>
+            </div>
+        </div>
+        <div class="col-sm-2 col-sm-12">
+            <div class="form-group">
+                <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron textcont jumbo2" style="text-align: center">
+        <div class="col-sm-2 col-sm-12"></div>
+        <div class="col-sm-8 col-sm-12 text-center align-center">
+            <p>This page was designed to help you to search for crime information for any area of Victoria
+                completely
+                free of charge.</p>
+            <p>Our customers use this information to find out which places to buy and where to avoid.</p>
+        </div>
+        <div class="col-sm-2 col-sm-12"></div>
     </div>
 
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="row">
-                <div class="col-md-12 text-center align-center">
-                    <p>This page was designed to help you to search for crime information for any area of Victoria
-                        completely
-                        free of charge.</p>
-                    <p>Our customers use this information to find out which places to buy and where to avoid.</p>
-                    <hr>
-                    <!-- </div>
-                <div class="col-sm-10 text-center align-center">
-                    <h3>Beautiful Victorian Crime visualisation</h3>
-                    <p>What can be more beautiful that visualisation of crime statistics? 
-                        As they say, a picture is worth a
-                        thousand words...</p>
-                </div> -->
-                </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-12">
-                    </div>
-                    <div class="col-sm-4 col-sm-12">
-                        <h2>Data Bar Graph</h2>
+                    <div class="col-sm-2 col-sm-12"></div>
+                    <div class="col-sm-8 col-sm-12">
+                        <h2 class="hlabel">Data Bar Graph</h2>
                         <div id="races-by-class-plot"></div>
                     </div>
+                    <div class="col-sm-2 col-sm-12"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-12"></div>
                     <div class="col-sm-4 col-sm-12">
-                        <h2>Data Pie Chart</h2>
+                        <h2 class="hlabel">Data Pie Chart</h2>
                         <div id="character-races-plot"></div>
                     </div>
-                    <div class="col-sm-2 col-sm-12">
-                        <h2>Data Bubble Chart</h2>
-                        <div id="bubble-plot"></div>               
+                    <div class="col-sm-4 col-sm-12">
+                        <h2 class="hlabel">Data Bubble Chart</h2>
+                        <div id="bubble-plot"></div>
                     </div>
+                    <div class="col-sm-2 col-sm-12"></div>
                 </div>
-                <div class="row">                    
-                    <div class="col-sm-2 col-sm-12">               
-
-                    </div>
-                    <div class="col-sm-8">
-                        <div id="table-area" class="">
-                            <h1 class="text-center loader" id="loader">All Data</h1>
-                            <table id="ufo-table" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th class="table-head">Incidents Recorded</th>
-                                        <th class="table-head">Local Governement Area</th>
-                                        <th class="table-head">Offence Division</th>
-                                        <th class="table-head">Year</th>
-                                        <th class="table-head">Total Incidents for LGA</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-sm-12">
-                    </div>
-                </div>
-                <div id='map' style='width: 400px; height: 300px;'></div>
-                <script>
-                mapboxgl.accessToken = 'pk.eyJ1IjoiYWExMzIwIiwiYSI6ImNrbXZyaGZpYTAzaTQydm11c3AyZzRscm0ifQ.Uo2hLjdga4bhsTTBDzT3_Q';
-                var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/aa1320/cknlst1v71oyf17s43wc8apn2', // style URL
-                center: [145.03, -37.78], // starting position [lng, lat]
-                zoom: 9 // starting zoom
-                });
-                </script>    
             </div>
-        </div>
 
-        <footer class="container-fluid text-center">
-            <p>Group 6</p>
-        </footer>
+            <footer class="container-fluid text-center">
+                <P></P>
+                <p class="footah">A Project by Group 6 - Evrard | Joe | Oscar | Raph</p>
+            </footer>
 
 </body>
 

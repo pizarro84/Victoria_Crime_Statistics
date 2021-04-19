@@ -261,12 +261,12 @@ function buildALLIncidentBarChart(dropdown_values) {
     });
     
     var layout = {
-      barmode: 'stack',
-      height: 400,
-      width: 500
+      barmode: 'stack'
     };
+
+    var config = {responsive: true};
     
-    Plotly.newPlot('races-by-class-plot', traces, layout);
+    Plotly.newPlot('races-by-class-plot', traces, layout, config);
   });
 }
 

@@ -1,1 +1,0 @@
-d3js: Create an HTML table using d3.js and JSON

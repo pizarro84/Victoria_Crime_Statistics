@@ -113,6 +113,22 @@ def get_distinct_values(for_column,
 
     return values
 
+# create route that renders index.html template
+@app.route("/heatmap")
+def heatmap():
+    """
+    Render the index.html template
+    """
+    return render_template("heatmap.html")
+
+# create route that renders index.html template
+@app.route("/alldata")
+def alldata():
+    """
+    Render the index.html template
+    """
+    return render_template("alldata.html")
+
 @app.route("/api/all")
 def all():
         
@@ -288,6 +304,23 @@ def query(year, lga, offence):
                                      + " ORDER BY total DESC, incidents_recorded DESC"))
 
     return jsonify([dict(row) for row in results])
+
+@app.route("/api/getalldata")
+def getalldata():   
+    results = db.engine.execute(text("WITH temp AS(SELECT * FROM crime_lga  WHERE 1 = 1 " 
+                                     + "), totals AS(SELECT year, local_government_area, "
+                                     + "                    SUM(incidents_recorded) total "
+                                     + "               FROM temp GROUP BY year, local_government_area "
+                                     + "              ORDER BY incidents_recorded DESC) "
+                                     + "SELECT tm.year, tm.local_government_area,tm.offence_division,"
+                                     + "       tm.incidents_recorded,tot.total "
+                                     + "  FROM temp tm, totals tot "
+                                     + " WHERE tm.year = tot.year "
+                                     + "   AND tm.local_government_area = tot.local_government_area "
+                                     + " ORDER BY total DESC, incidents_recorded DESC"))
+
+    return jsonify([dict(row) for row in results])
+
 
 
 if __name__ == "__main__":

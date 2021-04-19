@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Victoria_Crime_Statistics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #1998e2;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: white;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+                <div id='map' style='width: 800px; height: 600px;'></div>
+                <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoiYWExMzIwIiwiYSI6ImNrbXZyaGZpYTAzaTQydm11c3AyZzRscm0ifQ.Uo2hLjdga4bhsTTBDzT3_Q';
+                    var map = new mapboxgl.Map({
+                        container: 'map', // container ID
+                        style: 'mapbox://styles/aa1320/cknlst1v71oyf17s43wc8apn2', // style URL
+                        center: [145.03, -37.78], // starting position [lng, lat]
+                        zoom: 9 // starting zoom
+                    });
+                </script>
+            </div>
+        </div>
+
+</body>
+
+</html>

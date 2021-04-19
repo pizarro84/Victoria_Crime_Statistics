@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Business Frontpage - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Keania+One&family=Raleway&display=swap" rel="stylesheet">
+  <style>
+    .pagetitle {
+        font-family: 'Keania One', cursive;
+        line-height: 2;
+        font-size: 100px;
+        word-spacing: 4px;
+        color: white;
+    }
+
+    .pagetext {
+        font-family: 'Raleway', sans-serif;
+        font-size: large;
+        bottom: 50%;
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/home">A Project by Group 6</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/heatmap" target="_blank">Heatmap</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">Victoria Crime Statistics</h1>
+          <p class="lead mb-5 text-white-50">"the Place to be for up to date information"</p>
+          <div class="row">
+            <div class="col-sm-4 col-sm-12">
+              <div class="form-group">
+                <label for="sel-filter">Select a Year:</label>
+                <select class="form-control" id="sel-filter-year"></select>
+              </div>
+            </div>
+            <div class="col-sm-4 col-sm-12">
+              <div class="form-group">
+                <label for="sel-filter">Select an LGA:</label>
+                <select class="form-control" id="sel-filter-lga"></select>
+              </div>
+            </div>
+            <div class="col-sm-4 col-sm-12">
+              <div class="form-group">
+                <label for="sel-filter">Select an Offence Division:</label>
+                <select class="form-control" id="sel-filter-offence"></select>
+              </div>
+            </div>
+            <div class="col-sm-12 text-center">
+              <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-8 mb-5">
+        <div class="row graph-fg">
+          <div id="races-by-class-plot"></div>
+        </div>
+        <div class="row graph-fg">
+          <div id="character-races-plot"></div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <h2>Contact Us</h2>
+        <hr>
+        <address>
+          <strong>Start Bootstrap</strong>
+          <br>3481 Melrose Place
+          <br>Beverly Hills, CA 90210
+          <br>
+        </address>
+        <address>
+          <abbr title="Phone">P:</abbr>
+          (123) 456-7890
+          <br>
+          <abbr title="Email">E:</abbr>
+          <a href="mailto:#">name@example.com</a>
+        </address>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div id="table-area" class="">
+        <h1 class="text-center loader" id="loader">All Data</h1>
+        <table id="ufo-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="table-head">Incidents Recorded</th>
+              <th class="table-head">Local Governement Area</th>
+              <th class="table-head">Offence Division</th>
+              <th class="table-head">Year</th>
+              <th class="table-head">Total Incidents for LGA</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque sequi doloribus.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque sequi doloribus totam ut praesentium aut.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
