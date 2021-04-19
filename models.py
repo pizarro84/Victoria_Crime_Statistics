@@ -1,6 +1,6 @@
 def create_classes(db):
     class CRIME_LGA(db.Model):
-        __tablename__ = 'CRIME_LGA'
+        __tablename__ = 'crime_lga'
 
         row_id = db.Column(db.Integer, primary_key=True)
         year = db.Column(db.Integer)
