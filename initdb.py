@@ -17,7 +17,7 @@ if not engine.has_table("CRIME_LGA"):
     print("Creating Table")
 
     new_table = Table(
-        'CRIME_LGA', meta,
+        'crime_lga', meta,
         Column('row_id', Integer),
         Column('year', Integer),
         Column('local_government_area', String),
