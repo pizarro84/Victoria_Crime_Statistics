@@ -13,6 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -171,6 +173,16 @@
                     <div class="col-sm-2 col-sm-12">
                     </div>
                 </div>
+                <div id='map' style='width: 400px; height: 300px;'></div>
+                <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoiYWExMzIwIiwiYSI6ImNrbXZyaGZpYTAzaTQydm11c3AyZzRscm0ifQ.Uo2hLjdga4bhsTTBDzT3_Q';
+                var map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/aa1320/cknlst1v71oyf17s43wc8apn2', // style URL
+                center: [145.03, -37.78], // starting position [lng, lat]
+                zoom: 9 // starting zoom
+                });
+                </script>    
             </div>
         </div>
 
