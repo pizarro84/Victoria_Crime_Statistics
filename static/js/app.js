@@ -123,7 +123,6 @@ function displayValues() {
     
 buildIncidentPieChart();
 buildIncidentBarChart();
-builddatatable('D');
 buildIncidentBubbleChart();
 }
 
