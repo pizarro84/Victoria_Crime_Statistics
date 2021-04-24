@@ -108,7 +108,7 @@ a:link {
 }
 
 body {
-    background-image: url("../img/bg_final_007.jpg");
+    background-image: url("../img/bg_final_008.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% auto;
@@ -116,7 +116,7 @@ body {
 
 .rightbg {
     color: cornsilk;
-    background-color: rgba(39, 39, 44, 0.836);
+    background-color: rgba(22, 22, 141, 0.836);
     font-size: x-large;
 }
 
