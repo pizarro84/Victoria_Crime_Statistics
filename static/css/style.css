@@ -1,54 +1,8 @@
-html, body {
-    height: 100%;
-}
+/* Remove the navbar's default margin-bottom and rounded borders */
 
-.wrapper {
-    height: 100%;
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1.5;
-    word-spacing: 4px;
-    letter-spacing: 1px;
-}
-
-.fixed-bg {
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-    width: 100%;
-    color: white;
-    text-align: center;
-    display: table;
-}
-
-/*.fixed-bg h1 {
-    display: table-cell;
-    vertical-align: middle;
-}*/
-
-.scroll-bg {
-    background-color: #0f0f0a;
-    padding: 10px 70px;
-    color: #676767;
-}
-
-/* first section */
-
-.bg-1 {
-    background-image: url('https://www.dl.dropboxusercontent.com/s/dk3s266jb5klmba/bg1.jpg');
-}
-
-/* third section */
-
-.bg-2 {
-    background-image: url('https://www.dl.dropboxusercontent.com/s/jcord1lxh30e02z/bg2.jpg');
-}
-
-/* fifth section */
-
-.bg-3 {
-    background-image: url('https://www.dl.dropboxusercontent.com/s/rsk15kp7azmsi27/bg3.jpg');
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -61,7 +15,7 @@ html, body {
 
 .sidenav {
     padding-top: 20px;
-    background-color: #1998e2;
+    background-color: #bde219;
     height: 100%;
 }
 
@@ -74,6 +28,65 @@ footer {
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+.pagetitle {
+    font-family: 'Keania One', cursive;
+    line-height: 2;
+    font-size: 60px;
+    word-spacing: 4px;
+    color: cornsilk;
+    text-align: center;
+}
+
+.pagetext {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+    bottom: 50%;
+    color: cornsilk;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: rgba(39, 39, 44, 0.836);
+}
+
+label {
+    color: cornsilk;
+}
+
+.hlabel {
+    color: cornsilk;
+    background: #000;
+}
+
+.textcont {
+    min-height: 140px;
+}
+
+.jumbo2 {
+    min-height: 200px;
+    color: cornsilk;
+}
+
+.footah {
+    color: cornsilk;
+    background: #000;
+}
+
+.main {
+    margin-top: 100px;
+    /* Add a top margin to avoid content overlay */
+}
 
 @media screen and (max-width: 1024px) {
     .sidenav {
@@ -92,13 +105,11 @@ a:link {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-  }
-
-
+}
 
 body {
     background-image: url("../img/bg_final_007.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size:100% auto;
+    background-size: 100% auto;
 }
