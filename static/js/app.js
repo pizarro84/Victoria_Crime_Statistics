@@ -126,49 +126,6 @@ buildIncidentBarChart();
 buildIncidentBubbleChart();
 }
 
-function buildIncidentBubbleChart(selectedincident) {
-
-  var dropdown_values = new Object();
-  getDropdownValues(dropdown_values);
-  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
-
-
-  d3.json(url).then(function (response) {
-    var data = [{
-      x: response.map(d => d.year),
-      y: response.map(d => d.incidents_recorded),
-      mode: 'markers',
-      marker:{
-        size: [20,20, 20, 20,20,20,20,20,20,20]
-      }
-    }];
-
-    var config = {responsive: true};
-
-    Plotly.newPlot('bubble-plot', data, config);
-
-  });
-}
-
-function buildIncidentPieChart(selectedincident) {
-  var dropdown_values = new Object();
-  getDropdownValues(dropdown_values);
-
-  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
-
-  d3.json(url).then(function (response) {
-    var data = [{
-      labels: response.map(d => d.Offence_Division),
-      values: response.map(d => d.Incidents_Recorded),
-      type: 'pie'
-    }];
-
-    var config = {responsive: true};
-
-    Plotly.newPlot('character-races-plot', data, config);
-  });
-}
-
 function buildIncidentBarChart(dropdown_values) {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
@@ -183,9 +140,9 @@ function buildIncidentBarChart(dropdown_values) {
 
     grouped_data.forEach(element => {      
       traces.push({
-        x: element.map(d => d.Year),
-        y: element.map(d => d.Incidents_Recorded),
-        name: element[0].Offence_Division,
+        x: element.map(d => d.year),
+        y: element.map(d => d.incidents_recorded),
+        name: element[0].offence_division,
         type: 'bar'
       });
     });
@@ -197,6 +154,46 @@ function buildIncidentBarChart(dropdown_values) {
     var config = {responsive: true};
     
     Plotly.newPlot('races-by-class-plot', traces, layout, config);
+  });
+}
+
+function buildIncidentPieChart(selectedincident) {
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+
+  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
+
+  d3.json(url).then(function (response) {
+    var data = [{
+      labels: response.map(d => d.offence_division),
+      values: response.map(d => d.incidents_recorded),
+      type: 'pie'
+    }];
+
+    var config = {responsive: true};
+
+    Plotly.newPlot('character-races-plot', data, config);
+  });
+}
+
+function buildIncidentBubbleChart(selectedincident) {
+
+  var dropdown_values = new Object();
+  getDropdownValues(dropdown_values);
+  var url = `api/query/${dropdown_values.year}/${dropdown_values.lga}/${dropdown_values.offence}`;
+
+
+  d3.json(url).then(function (response) {
+    var data = [{
+      x: response.map(d => d.year),
+      y: response.map(d => d.incidents_recorded),
+      mode: 'markers'
+    }];
+
+    var config = {responsive: true};
+
+    Plotly.newPlot('bubble-plot', data, config);
+
   });
 }
 

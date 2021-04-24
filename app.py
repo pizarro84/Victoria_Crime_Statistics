@@ -121,10 +121,10 @@ def query(year, lga, offence):
         year_clause = " AND year = " + year + " "
 
     if lga != "All":
-        lga_clause = " AND UPPER(local_government_area) = UPPER(\"" + lga + "\") "
+        lga_clause = " AND UPPER(local_government_area) = UPPER('" + lga + "') "
 
     if offence != "All":
-        offence_clause = " AND UPPER(offence_division) = UPPER(\"" + offence + "\") "
+        offence_clause = " AND UPPER(offence_division) = UPPER('" + offence + "') "
     
     
     results = db.engine.execute(text("WITH temp AS(SELECT * FROM crime_lga  WHERE 1 = 1 " 
