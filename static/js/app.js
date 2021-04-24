@@ -135,28 +135,8 @@ function buildIncidentBubbleChart(selectedincident) {
 
   d3.json(url).then(function (response) {
     var data = [{
-      x: response.map(d => d.Year),
-      y: response.map(d => d.Incidents_Recorded),
-      mode: 'markers',
-      marker:{
-        size: [20,20, 20, 20,20,20,20,20,20,20]
-      }
-    }];
-
-    var config = {responsive: true};
-
-    Plotly.newPlot('bubble-plot', data, config);
-
-  });
-}
-
-function getAllBubbleChart() {
-  var url = 'api/query/All/All/All';
-
-  d3.json(url).then(function (response) {
-    var data = [{
-      x: response.map(d => d.Year),
-      y: response.map(d => d.Incidents_Recorded),
+      x: response.map(d => d.year),
+      y: response.map(d => d.incidents_recorded),
       mode: 'markers',
       marker:{
         size: [20,20, 20, 20,20,20,20,20,20,20]
@@ -189,24 +169,6 @@ function buildIncidentPieChart(selectedincident) {
   });
 }
 
-function buildIncidentAllBarChart(dropdown_values) {
-  var url = "api/all";  
-
-  d3.json(url).then(function (response) {
-    
-    var data = [{
-      labels: response.map(d => d.offence_division),
-      values: response.map(d => d.incidents_recorded),
-      type: 'pie'
-    }];
-
-    var config = {responsive: true};
-    Plotly.newPlot('character-races-plot', data, config);
-  });
-  
-}
-
-
 function buildIncidentBarChart(dropdown_values) {
   var dropdown_values = new Object();
   getDropdownValues(dropdown_values);
@@ -238,9 +200,10 @@ function buildIncidentBarChart(dropdown_values) {
   });
 }
 
-
-
-function buildALLIncidentBarChart(dropdown_values) {
+/***************************************************************
+***   Get all data
+***************************************************************/
+function getAllBarChart(dropdown_values) {
   var url = "api/all";
   
   d3.json(url).then(function(response) {
@@ -259,12 +222,66 @@ function buildALLIncidentBarChart(dropdown_values) {
     });
     
     var layout = {
+      title: 'Total Offences in VIC from 2011-2020',
       barmode: 'stack'
     };
 
     var config = {responsive: true};
     
     Plotly.newPlot('races-by-class-plot', traces, layout, config);
+  });
+}
+
+function getAllPieChart(dropdown_values) {
+  var url = "api/all";  
+
+  d3.json(url).then(function (response) {
+    
+    var data = [{
+      labels: response.map(d => d.offence_division),
+      values: response.map(d => d.incidents_recorded),
+      type: 'pie'
+    }];
+    
+    var layout = {
+      title: 'Offence Division Distribution in VIC from 2011-2020'
+    };
+
+    var config = {responsive: true};
+    Plotly.newPlot('character-races-plot', data,  layout, config);
+  });
+  
+}
+
+
+
+function getAllBubbleChart() {
+  var url = 'api/sum_by_year';
+
+  d3.json(url).then(function (response) {
+    var data = [{
+      x: response.map(d => d.year),
+      y: response.map(d => d.total),
+      mode: 'markers',
+      marker:{
+        size: [80,25,45,30,22,40,30,25,45,30],
+        sizeref: .2, 
+        color: ['rgb(255,0,55)','rgb(255,0,55)','rgb(30,200,15)','rgb(255,55,55)','rgb(0,80,150)','rgb(0,0,105)',
+                'rgb(255,0,55)','rgb(30,200,15)','rgb(255,55,55)','rgb(0,80,150)'],
+        sizemode: 'area',
+        opacity: 0.7
+      }
+    }];
+
+    var layout = {
+      title: 'All crimes in VIC from 2011 - 2020',
+      height: 600
+    };
+
+    var config = {responsive: true};
+
+    Plotly.newPlot('bubble-plot', data, layout, config);
+
   });
 }
 
@@ -291,6 +308,6 @@ function disableDropdown(){
 populateYearFilter();
 populateLgaFilter();
 populateOffenceFilter();
-buildALLIncidentBarChart();
-buildIncidentAllBarChart();
+getAllBarChart();
+getAllPieChart();
 getAllBubbleChart();

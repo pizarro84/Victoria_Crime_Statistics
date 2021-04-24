@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ url_for('static', filename='js/alldata.js') }}"></script>
+    <link rel="icon" href="data:,">
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -61,6 +62,10 @@
             th {text-align:center;
                 ruby-align: center;}
         }
+
+        .table-head {text-align:center;
+                ruby-align: center;
+        }
     </style>
 </head>
 
@@ -73,13 +78,11 @@
                 <div id="table-area" class="">
                     <h1 class="text-center loader" id="loader">All Data</h1>
                     <table id="ufo-table" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="table-head" >Incidents Recorded</th>
+                        <thead><tr>
+                                <th class="table-head" >Year</th>
                                 <th class="table-head">Local Governement Area</th>
                                 <th class="table-head">Offence Division</th>
-                                <th class="table-head">Year</th>
-                                <th class="table-head">Total Incidents for LGA</th>
+                                <th class="table-head">Incidents Recorded</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

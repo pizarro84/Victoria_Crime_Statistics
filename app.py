@@ -39,80 +39,6 @@ def query_results_to_dicts(results):
     # Convert SQLAlchemy query objects to json
     return simplejson.dumps(results)
 
-def get_year_param():
-    
-    selected_year = request.args.get("year")
-
-    # If we receive "All" from the front-end no filtering
-    if selected_year == "All":
-        return None
-
-    # Given the characters races in the database are title cased
-    # e.g. "Orc" not "orc"
-    if selected_year is not None:
-        selected_year = selected_year.title()
-    
-    return selected_year
-
-def get_lga_param():
-
-    selected_lga = request.args.get("lga")
-
-    # If we receive "All" from the front-end no filtering
-    if selected_lga == "All":
-        return None
-
-    # Given the characters races in the database are title cased
-    if selected_lga is not None:
-        selected_lga = selected_lga.title()
-    
-    return selected_lga
-
-def get_offence_param():
-
-    selected_offence = request.args.get("lga")
-
-    # If we receive "All" from the front-end no filtering
-    if selected_offence == "All":
-        return None
-
-    # Given the characters races in the database are title cased
-    if selected_offence is not None:
-        selected_offence = selected_offence.title()
-    
-    return selected_offence
-
-def get_distinct_values(for_column, 
-                        year_filter = None, 
-                        lga_filter = None, 
-                        offence_filter = None):
-    """
-    Get unique values for a specified column under specific filters
-    """
-    
-    value_query = db.session.query(
-        func.distinct(getattr(crime_stats_vic, for_column))
-    )
-
-    if year_filter is not None:
-        value_query = value_query.filter(
-            crime_stats_vic.year == year_filter
-        )
-    
-    if lga_filter is not None:
-        value_query = value_query.filter(
-            crime_stats_vic.local_government_area == lga_filter
-        )
-    
-    if offence_filter is not None:
-        value_query = value_query.filter(
-            crime_stats_vic.offence_division == offence_filter
-        )
-    
-    values = sorted([x[0] for x in value_query.all()])
-
-    return values
-
 # create route that renders index.html template
 @app.route("/heatmap")
 def heatmap():
@@ -133,60 +59,28 @@ def alldata():
 def all():
         
     results = db.session.query(
-        crime_stats_vic.row_id,
         crime_stats_vic.year,
         crime_stats_vic.local_government_area,
         crime_stats_vic.offence_division,
         crime_stats_vic.incidents_recorded
+    )
+
+    results = results.order_by(
+        getattr(crime_stats_vic, 'year'),
+        getattr(crime_stats_vic, 'local_government_area'),
     ).all()
 
     return query_results_to_dicts(results)
 
-@app.route("/api/values/<for_column>/<group_by>")
-@app.route("/api/values/<for_column>/", defaults={'group_by': None})
+@app.route("/api/values/<for_column>")
 def values(for_column, group_by = None):
-    # get filter parameters
-    year_param = get_year_param()
-    offence_param = get_offence_param()
-    lga_param = get_lga_param()
-
-    if group_by is None:
-        values = get_distinct_values(for_column, year_param, lga_param, offence_param)
-        return jsonify(values)
-
-    values_for_groupby = dict()
-
-    group_by_values = get_distinct_values(group_by, year_param, lga_param, offence_param)
-
-    results = db.session.query(
-        getattr(crime_stats_vic, group_by),
-        getattr(crime_stats_vic, for_column),
+    value_query = db.session.query(
+        func.distinct(getattr(crime_stats_vic, for_column))
     )
-
-    if year_param is not None:
-        results = results.filter(
-            crime_stats_vic.year == year_param
-        )
     
-    if lga_param is not None:
-        results = results.filter(
-            crime_stats_vic.local_government_area == lga_param
-        )
-    
-    if offence_param is not None:
-        results = results.filter(
-            crime_stats_vic.offence_division == offence_param
-        )
+    values = sorted([x[0] for x in value_query.all()])
 
-    results = results.order_by(
-        getattr(crime_stats_vic, group_by),
-        getattr(crime_stats_vic, for_column),
-    ).all()
-
-    for group in group_by_values:
-        values_for_groupby[group] = [x[1] for x in results if x[0] == group]
-
-    return query_results_to_dicts(values_for_groupby)
+    return jsonify(values)
 
 @app.route("/api/sum_by_year")
 def count_by_lga():
@@ -213,63 +107,6 @@ def count_by_offence():
     results = results.group_by(
         crime_stats_vic.offence_division
     ).all()
-
-    return query_results_to_dicts(results)
-
-@app.route("/api/where/<local_government_area>")
-def where(local_government_area):
-    
-    results = db.engine.execute(text("""
-        SELECT * FROM crime_lga 
-        WHERE UPPER(local_government_area) = :local_government_area
-    """).bindparams(
-        local_government_area=local_government_area.upper().strip()
-    ))
-
-    return jsonify([dict(row) for row in results])
-
-@app.route("/api/sum_by/<sum_by>", defaults={'optional_sum_by': None})
-@app.route("/api/sum_by/<sum_by>/<optional_sum_by>")
-def sum_by(sum_by, optional_sum_by=None):
-
-    # first let's check if we need to filter
-    selected_offence = get_lga_param()
-   
-    # let's first handle the case we there is no `optional_count_by`
-    if optional_sum_by is None:
-        results = db.session.query(
-            getattr(crime_stats_vic, sum_by),
-            func.count(getattr(crime_stats_vic, sum_by)).label("total")
-        )
-
-        # apply the query stirng filter if present
-        if selected_offence is not None:
-            results = results.filter(crime_stats_vic.local_government_area == selected_offence)
-
-        results = results.group_by(
-            getattr(crime_stats_vic, sum_by)
-        ).order_by(
-            getattr(crime_stats_vic, sum_by)
-        ).all()
-
-    else:
-        # lets handle grouping by two columns
-        results = db.session.query(
-            getattr(crime_stats_vic, sum_by),
-            getattr(crime_stats_vic, optional_sum_by),
-            func.count(getattr(crime_stats_vic, sum_by)).label("total")
-        )
-
-        if selected_offence is not None:
-            results = results.filter(crime_stats_vic.offence_division == selected_offence)
-
-        results = results.group_by(
-            getattr(crime_stats_vic, sum_by),
-            getattr(crime_stats_vic, optional_sum_by)
-        ).order_by(
-            getattr(crime_stats_vic, sum_by),
-            getattr(crime_stats_vic, optional_sum_by),
-        ).all()
 
     return query_results_to_dicts(results)
 

@@ -51,13 +51,6 @@ html, body {
     background-image: url('https://www.dl.dropboxusercontent.com/s/rsk15kp7azmsi27/bg3.jpg');
 }
 
-/* Remove the navbar's default margin-bottom and rounded borders */
-
-.navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-}
-
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
 .row.content {
@@ -99,10 +92,6 @@ a:link {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-  }
-  
-  a:hover, a:active {
-    background-color: red;
   }
 
 

@@ -13,11 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Keania+One&family=Raleway&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="data:,">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
@@ -55,8 +53,6 @@
                 height: auto;
             }
         }
-
-
 
         .pagetitle {
             font-family: 'Keania One', cursive;
@@ -98,6 +94,11 @@
         .footah {
             color: cornsilk;
             background: #000;
+        }
+
+        .main {
+            margin-top: 100px;
+            /* Add a top margin to avoid content overlay */
         }
     </style>
 </head>
@@ -180,23 +181,27 @@
                 <div class="row">
                     <div class="col-sm-2 col-sm-12"></div>
                     <div class="col-sm-8 col-sm-12">
-                        <h2 class="hlabel">Data Bar Graph</h2>
                         <div id="races-by-class-plot"></div>
                     </div>
                     <div class="col-sm-2 col-sm-12"></div>
                 </div>
+                <br>
                 <div class="row">
                     <div class="col-sm-2 col-sm-12"></div>
-                    <div class="col-sm-4 col-sm-12">
-                        <h2 class="hlabel">Data Pie Chart</h2>
+                    <div class="col-sm-8 col-sm-12">
                         <div id="character-races-plot"></div>
                     </div>
-                    <div class="col-sm-4 col-sm-12">
-                        <h2 class="hlabel">Data Bubble Chart</h2>
+                    <div class="col-sm-2 col-sm-12"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-12"></div>
+                    <div class="col-sm-8 col-sm-12">
                         <div id="bubble-plot"></div>
                     </div>
                     <div class="col-sm-2 col-sm-12"></div>
                 </div>
+                <br>
             </div>
 
             <footer class="container-fluid text-center">

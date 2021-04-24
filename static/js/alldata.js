@@ -1,5 +1,5 @@
 function alldata(){
-  var url = 'api/getalldata';
+  var url = 'api/all';
   
   d3.json(url).then(function(response) {
  
