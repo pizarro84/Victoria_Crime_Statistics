@@ -203,7 +203,7 @@ function buildIncidentBarChart(dropdown_values) {
 /***************************************************************
 ***   Get all data
 ***************************************************************/
-function getAllBarChart(dropdown_values) {
+function getAllBarChart() {
   var url = "api/all";
   
   d3.json(url).then(function(response) {
@@ -223,7 +223,8 @@ function getAllBarChart(dropdown_values) {
     
     var layout = {
       title: 'Total Offences in VIC from 2011-2020',
-      barmode: 'stack'
+      barmode: 'stack',
+      paper_bgcolor:'rgba(255,255,255,.85)'
     };
 
     var config = {responsive: true};
@@ -232,7 +233,7 @@ function getAllBarChart(dropdown_values) {
   });
 }
 
-function getAllPieChart(dropdown_values) {
+function getAllPieChart() {
   var url = "api/all";  
 
   d3.json(url).then(function (response) {
@@ -244,7 +245,8 @@ function getAllPieChart(dropdown_values) {
     }];
     
     var layout = {
-      title: 'Offence Division Distribution in VIC from 2011-2020'
+      title: 'Offence Division Distribution in VIC from 2011-2020',
+      paper_bgcolor:'rgba(255,255,255,.85)'
     };
 
     var config = {responsive: true};
@@ -275,7 +277,8 @@ function getAllBubbleChart() {
 
     var layout = {
       title: 'All crimes in VIC from 2011 - 2020',
-      height: 600
+      height: 600,
+      paper_bgcolor:'rgba(255,255,255,.85)'
     };
 
     var config = {responsive: true};
