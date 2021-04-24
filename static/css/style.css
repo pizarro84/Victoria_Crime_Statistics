@@ -15,7 +15,7 @@
 
 .sidenav {
     padding-top: 20px;
-    background-color: #bde219;
+    background-color: #1998e2;
     height: 100%;
 }
 
@@ -112,4 +112,24 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% auto;
+}
+
+.rightbg {
+    color: cornsilk;
+    background-color: rgba(39, 39, 44, 0.836);
+    font-size: x-large;
+}
+
+.ytcont {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

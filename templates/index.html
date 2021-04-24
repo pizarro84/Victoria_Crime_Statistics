@@ -54,75 +54,109 @@
     </header>
 
     <div class="jumbotron textcont" style="text-align: center">
-        <div class="col-sm-2 col-sm-12">
-            <div class="form-group">
-                <label for="sel-filter">Select a Year:</label>
-                <select class="form-control" id="sel-filter-year"></select>
+        <div class="row">
+            <div class="col-sm-1 col-sm-12"></div>
+            <div class="col-sm-2 col-sm-12">
+                <div class="form-group">
+                    <label for="sel-filter">Select a Year:</label>
+                    <select class="form-control" id="sel-filter-year"></select>
+                </div>
+            </div>
+            <div class="col-sm-3 col-sm-12">
+                <div class="form-group">
+                    <label for="sel-filter">Select an LGA:</label>
+                    <select class="form-control" id="sel-filter-lga"></select>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-12">
+                <div class="form-group">
+                    <label for="sel-filter">Select an Offence Division:</label>
+                    <select class="form-control" id="sel-filter-offence"></select>
+                </div>
+            </div>
+            <div class="col-sm-1 col-sm-12">
+                <div class="form-group">
+                    <br>
+                    <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+                </div>
+            </div>
+            <div class="col-sm-1 col-sm-12"></div>
+        </div>
+
+        <div class="row">
+            <p class="pagetext">You Can Select a Maximum of Two Filters</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-9 col-sm-12">
+            <div class="container-fluid text-center">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-sm-1 col-sm-12"></div>
+                        <div class="col-sm-11 col-sm-12">
+                            <div id="races-by-class-plot"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-1 col-sm-12"></div>
+                        <div class="col-sm-11 col-sm-12">
+                            <div id="character-races-plot"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-1 col-sm-12"></div>
+                        <div class="col-sm-11 col-sm-12">
+                            <div id="bubble-plot"></div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
             </div>
         </div>
-        <div class="col-sm-4 col-sm-12">
-            <div class="form-group">
-                <label for="sel-filter">Select an LGA:</label>
-                <select class="form-control" id="sel-filter-lga"></select>
-            </div>
-        </div>
-        <div class="col-sm-4 col-sm-12">
-            <div class="form-group">
-                <label for="sel-filter">Select an Offence Division:</label>
-                <select class="form-control" id="sel-filter-offence"></select>
-            </div>
-        </div>
-        <div class="col-sm-2 col-sm-12">
-            <div class="form-group">
-                <input id="clickMe" type="button" value="Display Data" onclick="displayValues()" />
+        <div class="col-sm-3 col-sm-12">
+            <div class="rightbg" style="text-align: center">
+                <p>This page was designed to help you to search for crime information for any area of Victoria
+                    completely
+                    free of charge.</p>
+                    <br>
+                <p>Our customers use this information to find out which places to buy and where to avoid.</p>
+                <br>
+                <div class="ytcont">
+                    <iframe frameborder="0" allowfullscreen class="video"
+                        src="https://www.youtube.com/embed/jcjk5gQAcpE" title="YouTube video player" frameborder="0"
+                        autoplay=1 mute=1
+                        allowfullscreen></iframe>
+                </div>
+                <br><br>
+                <div class="ytcont">
+                    <iframe frameborder="0" allowfullscreen class="video"
+                        src="https://www.youtube.com/embed/7ovvFkaNCtQ" title="YouTube video player" frameborder="0"
+                        autoplay=1 mute=1
+                        allowfullscreen></iframe>
+                </div>
+                <br><br>
+                <div class="ytcont">
+                    <iframe frameborder="0" allowfullscreen class="video"
+                        src="https://www.youtube.com/embed/QN5EjKN-YQM" title="YouTube video player" frameborder="0"
+                        autoplay=1 mute=1
+                        allowfullscreen></iframe>
+                </div>
+                
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                
             </div>
         </div>
     </div>
 
-    <div class="jumbotron textcont jumbo2" style="text-align: center">
-        <div class="col-sm-2 col-sm-12"></div>
-        <div class="col-sm-8 col-sm-12 text-center align-center">
-            <p>This page was designed to help you to search for crime information for any area of Victoria
-                completely
-                free of charge.</p>
-            <p>Our customers use this information to find out which places to buy and where to avoid.</p>
-        </div>
-        <div class="col-sm-2 col-sm-12"></div>
-    </div>
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="row">
-                <div class="row">
-                    <div class="col-sm-2 col-sm-12"></div>
-                    <div class="col-sm-8 col-sm-12">
-                        <div id="races-by-class-plot"></div>
-                    </div>
-                    <div class="col-sm-2 col-sm-12"></div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-2 col-sm-12"></div>
-                    <div class="col-sm-8 col-sm-12">
-                        <div id="character-races-plot"></div>
-                    </div>
-                    <div class="col-sm-2 col-sm-12"></div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-2 col-sm-12"></div>
-                    <div class="col-sm-8 col-sm-12">
-                        <div id="bubble-plot"></div>
-                    </div>
-                    <div class="col-sm-2 col-sm-12"></div>
-                </div>
-                <br>
-            </div>
-
-            <footer class="container-fluid text-center">
-                <P></P>
-                <p class="footah">A Project by Group 6 - Evrard | Joe | Oscar | Raphael</p>
-            </footer>
+    <footer class="container-fluid text-center">
+        <P></P>
+        <p class="footah">A Project by Group 6 - Evrard | Joe | Oscar | Raphael</p>
+    </footer>
 
 </body>
 
